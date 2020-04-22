@@ -1,30 +1,45 @@
 package br.com.alura.forum.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Moto {
 
-	private Long id;
-	private String Marca;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long Id;
+	@ManyToOne
+	private Marca marca;
 	private String Modelo;
 
-	public Moto(String marca, String modelo) {
-		Marca = marca;
+	public Moto() {
+		
+	}
+	
+	public Moto(Marca marca, String modelo) {
+		this.marca = marca;
 		Modelo = modelo;
 	}
 
 	public Long getId() {
-		return id;
+		return Id;
 	}
 
 	public void setId(Long id) {
-		this.id = id;
+		Id = id;
 	}
 
-	public String getMarca() {
-		return Marca;
+	public Marca getMarca() {
+		return marca;
 	}
+	
 
-	public void setMarca(String marca) {
-		Marca = marca;
+	public void setMarca(Marca marca) {
+		this.marca = marca;
 	}
 
 	public String getModelo() {
